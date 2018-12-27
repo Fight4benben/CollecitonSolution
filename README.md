@@ -1,0 +1,5 @@
+# CollecitonSolution
+ModbusTCP数据采集
+
+通过数据库配置导入TCP服务器的信息
+通过数据库配置寄存器解析信息
