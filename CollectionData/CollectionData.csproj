@@ -40,11 +40,17 @@
     <Reference Include="MySql.Data, Version=8.0.13.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.8.0.13\lib\net452\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Pipelines.Sockets.Unofficial, Version=1.0.0.0, Culture=neutral, PublicKeyToken=42ea0a778e13fbe2, processorArchitecture=MSIL">
       <HintPath>..\packages\Pipelines.Sockets.Unofficial.1.0.7\lib\net461\Pipelines.Sockets.Unofficial.dll</HintPath>
     </Reference>
     <Reference Include="StackExchange.Redis, Version=2.0.0.0, Culture=neutral, PublicKeyToken=c219ff1ca8c2ce46, processorArchitecture=MSIL">
       <HintPath>..\packages\StackExchange.Redis.2.0.519\lib\net461\StackExchange.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="Svg, Version=2.2.1.39233, Culture=neutral, PublicKeyToken=12a0bac221edeae2, processorArchitecture=MSIL">
+      <HintPath>..\packages\Svg.2.3.0\lib\net35\Svg.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -92,6 +98,8 @@
     <Compile Include="Application\MRegister.cs" />
     <Compile Include="Application\MServer.cs" />
     <Compile Include="Models\RealTimeValue.cs" />
+    <Compile Include="Models\TopologicalGraph.cs" />
+    <Compile Include="Models\TopologicalRegister.cs" />
     <Compile Include="MySQLHelper.cs" />
     <Compile Include="Communication\MPacket.cs" />
     <Compile Include="Communication\MServer.cs" />
@@ -100,6 +108,8 @@
     <Compile Include="RedisHelper.cs" />
     <Compile Include="Util\DapperConfig.cs" />
     <Compile Include="Util\DataTypeChange.cs" />
+    <Compile Include="Util\GraphQueryHelper.cs" />
+    <Compile Include="Util\SVGParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

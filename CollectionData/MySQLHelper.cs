@@ -22,6 +22,7 @@ namespace CollectionData
                                     MPacket.ServerID,MPacket.StartAddress,MPacket.TotalCount
                                     FROM EnergyDB.MServer 
                                     INNER JOIN MPacket on MServer.ID = MPacket.ServerID
+                                    WHERE IsUse = 1
                                     ";
 
                 var list = conn.Query<Communication.MServer, Communication.MPacket, Communication.MServer>(querySql,
@@ -47,7 +48,7 @@ namespace CollectionData
             }
         }
 
-        public List<Application.MRegister> GetRegisters(int serverId,string connectionString)
+        public List<Application.MRegister> GetRegisters(int serverId, string connectionString)
         {
 
             using (IDbConnection conn = DapperConfig.GetSqlConnection(connectionString))
@@ -58,6 +59,43 @@ namespace CollectionData
                                    ";
 
                 return conn.Query<Application.MRegister>(querySql, new { ServerID = serverId }).ToList();
+            }
+        }
+
+        public List<Models.TopologicalGraph> GetAllGraph(string connectionString)
+        {
+            using (IDbConnection conn = DapperConfig.GetSqlConnection(connectionString))
+            {
+                string querySql = @"SELECT * FROM EnergyDB.TopologicalGraph;";
+
+                return conn.Query<Models.TopologicalGraph>(querySql).ToList();
+            }
+        }
+
+        public string GetSvgPath(int id, string connectionString)
+        {
+            using (IDbConnection conn = DapperConfig.GetSqlConnection(connectionString))
+            {
+                string querySql = @"SELECT Path FROM EnergyDB.TopologicalGraph 
+                                    WHERE ID=@ID;";
+
+                List<string> result =  conn.Query<string>(querySql, new { ID = id }).ToList();
+
+                if (result.Count > 0)
+                    return result[0];
+                else
+                    return "error";
+            }
+        }
+
+        public List<CollectionData.Models.TopologicalRegister> GetTopologicalRegisters(int id, string connectionString)
+        {
+            using (IDbConnection conn = DapperConfig.GetSqlConnection(connectionString))
+            {
+                string querySql = @"SELECT MeterCode,ParamCode FROM EnergyDB.TopologicalRegister
+                                    WHERE ID=@ID;";
+
+                return conn.Query<CollectionData.Models.TopologicalRegister>(querySql, new { ID = id }).ToList();
             }
         }
     }

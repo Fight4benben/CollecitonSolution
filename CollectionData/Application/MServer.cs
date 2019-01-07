@@ -20,6 +20,7 @@ namespace CollectionData.Application
         /// 服务器IPv4地址
         /// </summary>
         public string Address { get; set; }
+
         /// <summary>
         /// 服务器端口
         /// </summary>

@@ -82,6 +82,8 @@ namespace CollectionServer
             ShowLog("ModbusTCP服务连接测试...");
             try
             {
+                InitBaseInfo();
+
                 string connectionString = ConfigurationManager.ConnectionStrings["MySQLString"].ConnectionString;
                 m_SqlHelper = new CollectionData.MySQLHelper();
                 m_ServerList = m_SqlHelper.GetCommunicationServers(connectionString);
