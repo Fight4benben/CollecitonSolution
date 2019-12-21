@@ -123,19 +123,24 @@ namespace CollectionServer
             while (m_IsRunning)
             {
                 Thread.Sleep(2000);
-
-                //redis 存储上一次值
-                if (m_ValueDictionary.Count != 0)
+                try
                 {
-                    SaveDataToRedis("Last");
+                    //redis 存储上一次值
+                    if (m_ValueDictionary.Count != 0)
+                    {
+                        SaveDataToRedis("Last");
+                    }
+
+                    //通过TCP获取数值并解析存储到变量m_RegisterDic中
+                    AccessAndAnaylysis();
+
+                    //redis存储当前数值
+                    SaveDataToRedis("Current");
                 }
-
-                //通过TCP获取数值并解析存储到变量m_RegisterDic中
-                AccessAndAnaylysis();
-
-                //redis存储当前数值
-                SaveDataToRedis("Current");
-                ShowLog("数据已经存储到实时库...");
+                catch (Exception e)
+                {
+                    ShowLog("出现错误："+e.Message);
+                }
             }
 
             ShowLog("采集任务已停止,等待下一次重启");
@@ -174,7 +179,6 @@ namespace CollectionServer
 
                         break;
                     }
-                    
                 }
 
                 //解析当前服务器读取的数据,当前server对应的值为false时表示通讯中断，不解析数据；true表示通讯正常

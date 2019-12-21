@@ -78,7 +78,7 @@
             this.tabControl1.Location = new System.Drawing.Point(1, 53);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1094, 594);
+            this.tabControl1.Size = new System.Drawing.Size(1038, 448);
             this.tabControl1.TabIndex = 2;
             // 
             // tabPage1
@@ -87,7 +87,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1086, 568);
+            this.tabPage1.Size = new System.Drawing.Size(1030, 422);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "系统日志显示";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -97,7 +97,7 @@
             this.rtbLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtbLog.Location = new System.Drawing.Point(3, 3);
             this.rtbLog.Name = "rtbLog";
-            this.rtbLog.Size = new System.Drawing.Size(1080, 562);
+            this.rtbLog.Size = new System.Drawing.Size(1024, 416);
             this.rtbLog.TabIndex = 0;
             this.rtbLog.Text = "";
             // 
@@ -233,7 +233,7 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 655);
+            this.label1.Location = new System.Drawing.Point(12, 509);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 12);
             this.label1.TabIndex = 3;
@@ -243,7 +243,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(245, 655);
+            this.label2.Location = new System.Drawing.Point(245, 509);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 12);
             this.label2.TabIndex = 4;
@@ -253,7 +253,7 @@
             // 
             this.lblStartTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblStartTime.AutoSize = true;
-            this.lblStartTime.Location = new System.Drawing.Point(83, 655);
+            this.lblStartTime.Location = new System.Drawing.Point(83, 509);
             this.lblStartTime.Name = "lblStartTime";
             this.lblStartTime.Size = new System.Drawing.Size(0, 12);
             this.lblStartTime.TabIndex = 5;
@@ -262,7 +262,7 @@
             // 
             this.lblTotalTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblTotalTime.AutoSize = true;
-            this.lblTotalTime.Location = new System.Drawing.Point(340, 655);
+            this.lblTotalTime.Location = new System.Drawing.Point(340, 509);
             this.lblTotalTime.Name = "lblTotalTime";
             this.lblTotalTime.Size = new System.Drawing.Size(0, 12);
             this.lblTotalTime.TabIndex = 6;
@@ -328,7 +328,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1093, 676);
+            this.ClientSize = new System.Drawing.Size(1037, 530);
             this.Controls.Add(this.lblTotalTime);
             this.Controls.Add(this.lblStartTime);
             this.Controls.Add(this.label2);
