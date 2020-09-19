@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dapper;
+using CollectionData.Models;
 
 namespace CollectionData
 {
@@ -96,6 +97,42 @@ namespace CollectionData
                                     WHERE ID=@ID;";
 
                 return conn.Query<CollectionData.Models.TopologicalRegister>(querySql, new { ID = id }).ToList();
+            }
+        }
+
+        public int InsertEnergyData(List<EnergyData> data, string connectionString)
+        {
+            using (IDbConnection conn = DapperConfig.GetSqlConnection(connectionString))
+            {
+                string deleteSql = @"DELETE FROM t_data_originenergyvalue";
+
+                conn.Execute(deleteSql);
+                int cnt = 0;
+                using (var trans = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        string querySql = @"INSERT INTO t_data_originenergyvalue(f_buildid,f_metercode,f_time,f_value,f_calced) values(@BuildId,@MeterCode,@Time,@Value,@Calced)";
+                        //cnt = conn.Execute(querySql, data,trans,60,CommandType.Text);
+
+                        foreach (var item in data)
+                        {
+                            cnt += conn.Execute(querySql, item, trans, 60, CommandType.Text);
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        trans.Rollback();
+                        throw e;
+                    }
+
+                    trans.Commit();
+                }
+                    //string deleteSql = @"DELETE FROM t_data_originenergyvalue";
+
+                    //conn.Execute(deleteSql);
+                    
+                return cnt;
             }
         }
     }

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file contains job definitions in schema version 2.0 format -->
+<job-scheduling-data xmlns="http://quartznet.sourceforge.net/JobSchedulingData" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0">
+  <processing-directives>
+    <overwrite-existing-data>true</overwrite-existing-data>
+  </processing-directives>
+  <schedule>
+    <!--天罡NB水表-->
+    <job>
+      <name>SavingEnergyJob</name>
+      <group>EnergyDataGroup</group>
+      <description>存储数据定时接口</description>
+      <!--格式：实现了IJob接口的包含完整命名空间的类名,程序集名称-->
+      <job-type>CollectionSolution.Jobs.SavingEnergyJob, CollectionSolution</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+    </job>
+    <trigger>
+      <cron>
+        <name>SavingEnergyTrigger</name>
+        <group>SavingEnergyTriggerGroup</group>
+        <job-name>SavingEnergyJob</job-name>
+        <job-group>EnergyDataGroup</job-group>
+        <!--<start-time>2018-01-22T00:00:00+08:00</start-time>-->
+        <cron-expression>0 0/1 * * * ?</cron-expression>
+        <!--每10秒执行一次 配置完整格式为： [秒] [分] [小时] [日] [月] [周] [年] -->
+        <!--每天每个小时执行一次 配置完整格式为： 0 0 0/1 * * ? -->
+        <!--每天2点30分执行一次 配置完整格式为： 0 30 2 * * ? -->
+      </cron>
+    </trigger>
+
+  </schedule>
+</job-scheduling-data>
